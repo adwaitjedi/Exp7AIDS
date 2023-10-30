@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses', 'Profit'],
+            ['2017', 1000, 400, 200],
+            ['2018', 1170, 460, 250],
+            ['2019', 660, 1120, 300],
+            ['2020', 1030, 540, 350]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Company Performance',
+                subtitle: 'Sales, Expenses, and Profit: 2017-2020',
+            },
+            bars: 'vertical' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    function myFunction(x) {
+        document.body.style.transition = "background-color 0.8s ease-in-out"; // Add the transition property to the body
+        document.body.style.backgroundColor = "black";
+    }
+
+    function clearFunc(x){
+        document.body.removeAttribute("style");
+    }
+
+</script>
+
+<body>
+
+    <div class="Navbar">
+        <h1>AIDS-2</h1>
+        <h1>Musaveer Manekia</h1>
+        <h1>Experiment 7</h1>
+    </div>
+
+    <div class="main">
+        <h2 id="h2Company">Company Performance Over the following Year's</h2>
+        <div id="barchart_material" class="chart" style="width: 800px; height: 500px; padding: 0.5em;" onmouseover="myFunction(this)" onmouseleave="clearFunc(this)"></div>
+    </div>
+
+
+</body>
+
+</html>
